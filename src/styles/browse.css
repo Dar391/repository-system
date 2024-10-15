@@ -1,0 +1,20 @@
+.BrowsePage .headingBrowse{
+    font-size: 40px;
+    color: whitesmoke;
+    font-weight: bold;
+    padding:2% 5% 0% 5%;
+}
+
+.BrowsePage .subheading1{
+    color: whitesmoke;
+    margin-left: 20%;
+    margin-right: 20%;
+    font-size: 14px;
+}
+
+.BrowsePage .btnOpen{
+    color: rgb(171, 61, 61);
+    background-color: transparent;
+    border: 0;
+    font-size: smaller;
+}

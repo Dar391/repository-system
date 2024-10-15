@@ -1,0 +1,128 @@
+
+
+ .section2{
+    background-color: whitesmoke;
+    padding-top: 2%;
+    height: auto;
+    padding: 0% 3%;
+}
+
+
+
+ .headings3{
+    font-size: 40px;
+    font-weight: bolder;
+    color: rgb(146, 12, 12)
+}
+
+
+
+
+ .card2:hover{
+    transform: scale(1.05);
+}
+
+ .accessedMaterials .card2{
+    background-color: white;
+    border: 1px solid rgb(196, 192, 192);
+    color: black;
+    text-align: left;
+    box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.1);
+    height: auto;
+}
+
+.accessedMaterials .btnOpen{
+    color: rgb(171, 61, 61);
+    background-color: transparent;
+    border: 0;
+    text-align: left;
+    display: block;
+    font-size:smaller ;
+}
+
+ .accessedMaterials .cardDesc{
+    text-align: left;
+    font-size: smaller;
+}
+
+ .search-wrapper{
+    position: relative;
+    width: 100%;
+   
+}
+
+ .search-btn{
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  color:rgb(146, 12, 12);
+  cursor: pointer;
+}
+
+ .search-input{
+    background-color: transparent;
+    border: 2px solid black;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+.search-input::placeholder{
+    color: black;
+    opacity: 0.5;
+}
+
+
+
+ .pagination-container{
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 5px;
+  background-color: rgb(228, 197, 158);
+  padding: 10px;
+  border-radius: 50px; /* Pill shape */
+  width: fit-content; /* Ensures the container fits its contents */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for aesthetics */
+  margin: auto ;
+  
+  
+}
+
+ .more-btn{
+    background-color: rgb(128, 61, 59);
+  color: white;
+  border-radius: 50px;
+  padding: 5px 15px;
+  border: none;
+  font-weight: bold;
+  font-size: 12px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+ .next-btn{
+   background-color: transparent;
+  color:black;
+  border: none;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+ .next-btn .next-arrow{
+    font-size: 18px;
+}
+
+ .more-btn:hover{
+    background-color: #656565;
+}
+
+ .next-btn:hover{
+    background-color: #b0c3ff;
+}
