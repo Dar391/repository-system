@@ -26,6 +26,7 @@ import ReactPaginate from 'react-paginate'
 import '../../styles/collaboration.css'
 import MaterialRequestModal from './MaterialRequestModal'
 import pdfFile from '../../assets/Prototyping.pdf'
+import myImage from '../../assets/image.jpg'
 
 const collaborationRequests = [
   {
@@ -34,7 +35,8 @@ const collaborationRequests = [
     discipline: 'Computer Science',
     institution: 'University of Technology',
     dateRequested: '2024-11-25',
-    imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp',
+    imageUrl: myImage,
+    email: 'alice.smith@sample.com',
     filePath: pdfFile,
     description:
       'An entry-level guide exploring the basics of quantum computing, its principles, and potential applications in solving complex computational problems.',
@@ -45,6 +47,7 @@ const collaborationRequests = [
     discipline: 'Artificial Intelligence',
     institution: 'Global Institute of AI',
     dateRequested: '2024-11-20',
+    email: 'alice.smith@sample.com',
     imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-4.webp',
     description:
       'A comprehensive discussion on cutting-edge algorithms powering artificial intelligence, with practical use cases in machine learning and optimization.',
@@ -55,6 +58,7 @@ const collaborationRequests = [
     discipline: 'Data Science',
     institution: 'National Data Academy',
     dateRequested: '2024-11-18',
+    email: 'alice.smith@sample.com',
     imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp',
     description:
       'An introductory material designed to help beginners understand the fundamental concepts and tools used in data science, including Python and R.',
@@ -65,6 +69,7 @@ const collaborationRequests = [
     discipline: 'Cybersecurity',
     institution: 'SecureTech University',
     dateRequested: '2024-11-15',
+    email: 'alice.smith@sample.com',
     imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp',
     description:
       'A foundational course on cybersecurity concepts, best practices, and threat prevention techniques essential for protecting digital infrastructure.',
@@ -75,6 +80,7 @@ const collaborationRequests = [
     discipline: 'Web Development',
     institution: 'Institute of Creative Technologies',
     dateRequested: '2024-11-12',
+    email: 'alice.smith@sample.com',
     imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-3.webp',
     description:
       'A beginner-friendly resource on web development, focusing on HTML, CSS, and JavaScript, aimed at creating responsive and interactive websites.',
@@ -85,6 +91,7 @@ const collaborationRequests = [
     discipline: 'Cloud Computing',
     institution: 'CloudTech Institute',
     dateRequested: '2024-11-10',
+    email: 'alice.smith@sample.com',
     imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp',
     description:
       'An overview of cloud computing principles, including cloud services, deployment models, and key providers like AWS and Azure.',
@@ -95,6 +102,7 @@ const collaborationRequests = [
     discipline: 'Software Development',
     institution: 'Global IT College',
     dateRequested: '2024-11-08',
+    email: 'alice.smith@sample.com',
     imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-3.webp',
     description:
       'An in-depth material on creating mobile applications using modern frameworks, focusing on both Android and iOS platforms.',
@@ -105,6 +113,7 @@ const collaborationRequests = [
     discipline: 'Networking',
     institution: 'Networking Academy',
     dateRequested: '2024-11-05',
+    email: 'alice.smith@sample.com',
     imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp',
     description:
       'A primer on network administration, covering LAN/WAN configuration, troubleshooting, and maintenance of network hardware and software.',
@@ -115,6 +124,7 @@ const collaborationRequests = [
     discipline: 'Cybersecurity',
     institution: 'TechSecure University',
     dateRequested: '2024-11-03',
+    email: 'alice.smith@sample.com',
     imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-8.webp',
     description:
       'A specialized resource on ethical hacking methodologies and penetration testing techniques to identify and mitigate vulnerabilities in systems.',
@@ -125,6 +135,7 @@ const collaborationRequests = [
     discipline: 'Blockchain',
     institution: 'Blockchain Academy',
     dateRequested: '2024-11-01',
+    email: 'alice.smith@sample.com',
     imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-8.webp',
     description:
       'An introductory guide to blockchain technology, its architecture, consensus mechanisms, and applications in industries like finance and supply chain.',
