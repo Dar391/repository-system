@@ -1,18 +1,20 @@
 import React, { useState } from 'react'
+import CollabRequest from './Collaborations_menus/CollabRequest'
+import CollabUpdate from './Collaborations_menus/CollabUpdate'
 import { Col, Container, Row } from 'react-bootstrap'
 import Sidebar from './Sidebar'
-import MaterialsEngagement from './Engagements_menus/MaterialsEngagement'
-import UserEngagements from './Engagements_menus/UserEngagements'
 
-const Engagements = () => {
-  const [activeComponent, setActiveComponent] = useState('material')
+const Collaborations = () => {
+  const [activeComponent, setActiveComponent] = useState('request')
+
   const renderComponent = () => {
-    if (activeComponent === 'material') {
-      return <MaterialsEngagement />
-    } else if (activeComponent === 'user') {
-      return <UserEngagements />
+    if (activeComponent === 'request') {
+      return <CollabRequest />
+    } else if (activeComponent === 'update') {
+      return <CollabUpdate />
     }
   }
+
   return (
     <Container fluid style={{ backgroundColor: 'whitesmoke' }}>
       <Row>
@@ -31,4 +33,4 @@ const Engagements = () => {
   )
 }
 
-export default Engagements
+export default Collaborations

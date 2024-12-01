@@ -1,20 +1,169 @@
+.BrowsePage .mainCustomSearch{
+    max-width: 18%;
+    border-right: 2px solid rgb(225, 224, 224);
+    
+}
+
+.BrowsePage .titleHeader{
+    max-width: 34%;
+    padding-right: 3%;
+}
+
+.BrowsePage .section_2{
+    background-color: whitesmoke;
+    color: black;
+}
+
+.BrowsePage .page-sort{
+    color: rgb(108, 108, 108);
+    
+}
+
 .BrowsePage .headingBrowse{
-    font-size: 40px;
+    font-size: 30px;
     color: whitesmoke;
     font-weight: bold;
-    padding:2% 5% 0% 5%;
+    margin: 0%;
+}
+
+
+.BrowsePage .searchHeader{
+    align-items: center;
+    justify-content: center;
+    margin: 1% 1% 0% 1%;
+}
+
+.BrowsePage .search-wrapper{
+    width: 80%;
+
+}
+
+.BrowsePage .secondHeader{
+    border-bottom: 2px solid rgb(123, 47, 47);
+    
 }
 
 .BrowsePage .subheading1{
     color: whitesmoke;
-    margin-left: 20%;
-    margin-right: 20%;
     font-size: 14px;
+    
 }
+
+.BrowsePage .dropdown{
+    height: 50;
+}
+.BrowsePage .col-customSearch{
+    border-bottom: 2px solid rgb(225, 224, 224) ;
+    padding-bottom: 2%;
+
+}
+
+
 
 .BrowsePage .btnOpen{
     color: rgb(171, 61, 61);
     background-color: transparent;
     border: 0;
     font-size: smaller;
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center; 
+    padding: 0;
+    margin-top: auto;  
 }
+
+.BrowsePage .cardDesc{
+    text-align: left;
+    font-size: smaller;
+}
+
+.BrowsePage .card{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    
+}
+
+.BrowsePage .card-body{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.BrowsePage .card:hover{
+    transform: scale(1.05);
+}
+
+.BrowsePage .card-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.BrowsePage .icon-group {
+    position: absolute;
+    top: 8px;   /* Position it near the top of the image */
+    right: 8px; /* Position it near the right of the image */
+    display: flex;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.7); /* Slight white background for visibility */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.BrowsePage .icon-group .fa-icon {
+    margin-left: 5px; /* space between icons */
+}
+
+.BrowsePage .icon-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .BrowsePage .card {
+    position: relative;
+  }
+
+  .BrowsePage .btnAdd{
+    background-color: rgb(228, 197, 158);
+     border: none;
+     padding: 10px 20px;
+     margin: 4px;
+     width: auto;
+     border-radius: 10px; /* Add rounded corners */
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    color: black;
+    height: 38px;
+    white-space: nowrap;
+    line-height: 1;
+    font-size: smaller;
+    }
+
+.BrowsePage .input-group{
+    box-shadow: 0 4px 10px rgba(88, 32, 32, 0.5);
+}
+
+.BrowsePage .Link{
+    color: rgb(228, 197, 158);
+}
+
+.BrowsePage .Link-column{
+    display: flex;
+  flex-direction: column; 
+  gap: 10px; 
+ 
+  
+}
+
+.BrowsePage .Link-column a{
+    text-decoration: none; 
+    color:white; 
+}
+
+.BrowsePage .Link-column a:hover {
+    text-decoration: underline; 
+  }

@@ -1,19 +1,15 @@
 body {
   margin: 0;
-  padding: 0;
+  padding-top: 90px;
 }
 
-.main{
+.main {
   background-color: rgb(146, 12, 12);
- 
 }
 
 .navbar-nav .nav-item .nav-link {
-  margin-right: 10px; /* Adjust the value as needed */
-  color: azure;
+  color: whitesmoke;
 }
-
-
 
 @keyframes App-logo-spin {
   from {
@@ -22,4 +18,12 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+.fixed-top {
+  z-index: 1050; /* Ensure the navbar stays on top */
+}
+
+footer {
+  margin-top: auto;
 }

@@ -21,6 +21,10 @@ font-weight: bolder;
     font-weight: bold;
 }
 
+.card{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
 .heading3{
     color: black;
     font-size: 40px;
@@ -79,6 +83,11 @@ width: auto;
     padding: 30px 0px 30px 0px;
 }
 
+.ExplorePage{
+    background-color:  whitesmoke; 
+    padding: 30px 0px 30px 0px;
+}
+
 .card3{
     background-color:  white; 
     padding: 30px 0px 30px 0px;
@@ -88,3 +97,29 @@ width: auto;
     background-color: transparent;
 }
 
+
+.carousel-image {
+    width: 100%; /* Image takes up 100% of the container width */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 80vh; /* Ensure the image doesn't overflow the section */
+    object-fit: cover;/* Cover ensures the image fills the area */
+  }
+
+  .image-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: auto;
+   width: auto;
+
+  }
+
+  
+  .studying-image {
+    width: 60%;
+    height: auto;
+    object-fit: cover; 
+    display: block;
+  }
+  
+  

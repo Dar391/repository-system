@@ -2,21 +2,32 @@
 
  .section2{
     background-color: whitesmoke;
-    padding-top: 2%;
     height: auto;
-    padding: 0% 3%;
+}
+
+.heading{
+  background-color: rgb(146, 12, 12);
+  padding: 1%;
 }
 
 
 
  .headings3{
-    font-size: 40px;
+    font-size: 31px;
     font-weight: bolder;
-    color: rgb(146, 12, 12)
+    color: whitesmoke;
+    margin-bottom: 0%;
 }
 
-
-
+ .subtitles1{
+  color: white;
+  font-size: 14px;
+}
+.searchHeader{
+  align-items: center;
+  justify-content: center;
+  margin: 1% 1% 0% 1%;
+}
 
  .card2:hover{
     transform: scale(1.05);
@@ -126,3 +137,28 @@
  .next-btn:hover{
     background-color: #b0c3ff;
 }
+
+.icon-group {
+    position: absolute;
+    top: 8px;   /* Position it near the top of the image */
+    right: 8px; /* Position it near the right of the image */
+    display: flex;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.7); /* Slight white background for visibility */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+ .icon-group .fa-icon {
+    margin-left: 5px; /* space between icons */
+}
+
+ .icon-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .card {
+    position: relative;
+  }

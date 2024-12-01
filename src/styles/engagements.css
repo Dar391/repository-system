@@ -1,0 +1,131 @@
+html,
+body {
+  min-width: 320px;
+}
+
+.Sidebar .layout {
+  background-color: rgb(146, 12, 12);
+  height: 100vh;
+  overflow: auto;
+  position: fixed;
+}
+
+.UserEngagement {
+  background-color: whitesmoke;
+}
+
+.imageProfile {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 5%;
+}
+
+.menuItems {
+  background-color: transparent !important;
+  border: none !important;
+  color: whitesmoke !important;
+}
+
+.menuItems:hover {
+  background-color: rgb(106, 34, 34) !important; /* Hover color */
+}
+
+.menuItems.active {
+  background-color: rgb(134, 35, 35) !important; /* Active color */
+  color: white !important; /* Optional for text color */
+}
+
+.card-alignment {
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-card {
+  background-color: #f8f9fa; /* Light background */
+  border: 1px solid #007bff; /* Custom border color */
+  border-radius: 0.5rem; /* Rounded corners */
+  padding: 20px; /* Padding inside the card */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.iconStyle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+
+.legend-style {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.custom-card {
+  height: 110px;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+  padding-right: 0;
+}
+
+.iconStyle {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.text-column {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.additional-info {
+  white-space: nowrap;
+  font-style: italic;
+  color: grey;
+  font-size: 10px;
+}
+
+.UserEngagement .cardMainData {
+  font-weight: bolder;
+  font-size: 30px;
+}
+
+.UserEngagement .cardSubtitle {
+  font-size: 12px;
+  font-style: italic;
+}
+
+.UserEngagement .authorSubtitle {
+  font-size: 12px;
+}
+
+.UserEngagement .viewAll {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-right: 15px;
+}
+
+.btnCloseModal {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hoverText {
+  color: gray;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.hoverText:hover {
+  color: rgb(79, 5, 5); /* Change this to your preferred hover color */
+}

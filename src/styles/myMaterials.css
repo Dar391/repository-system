@@ -1,16 +1,17 @@
 .myMaterials{
-    padding-top: 20px;
+   background-color: whitesmoke;
+
+}
+
+.myMaterials .searchHeader{
+    align-items: center;
+    justify-content: center;
+    margin: 1% 1% 0% 1%;
 }
 
 
-
-.myMaterials .sections{
-    height: auto;
-    padding: 0% 3%;
-    
-}
 .myMaterials .headings2{
-    font-size: 40px;
+    font-size: 30px;
     font-weight: bolder;
     color: white
 }
@@ -33,6 +34,8 @@
     transform: scale(1.05);
 }
 
+
+
 .btnAdd{
     background-color: rgb(228, 197, 158);
      border: none;
@@ -40,7 +43,7 @@
      margin: 4px;
      width: auto;
      border-radius: 10px; /* Add rounded corners */
-     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease;
     color: black;
     height: 38px;
@@ -48,6 +51,8 @@
     line-height: 1;
     font-size: smaller;
     }
+
+    
 
 .myMaterials .btnOpen{
     color: rgb(171, 61, 61);
@@ -75,21 +80,17 @@
   transform: translateY(-50%);
   border: none;
   background: transparent;
-  color:white;
+  color:rgb(171, 61, 61);;
   cursor: pointer;
   
 }
 
 .myMaterials .search-input{
-    background-color: transparent;
     border: 2px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
-.myMaterials .search-input::placeholder{
-    color: white;
-    opacity: 0.5;
-}
+
 
 .myMaterials .pagination-container{
   display: flex;
@@ -142,4 +143,38 @@
 
 .myMaterials .next-btn:hover{
     background-color: #b0c3ff;
+}
+
+.myMaterials .icon-group {
+    position: absolute;
+    top: 8px;   /* Position it near the top of the image */
+    right: 8px; /* Position it near the right of the image */
+    display: flex;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.7); /* Slight white background for visibility */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.myMaterials .icon-group .fa-icon {
+    margin-left: 5px; /* space between icons */
+}
+
+.myMaterials .icon-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .myMaterials .card {
+    position: relative;
+  }
+
+.materialHeader{
+    background-color: rgb(146, 12, 12);
+    padding: 0% 1% 0% 1%;
+}
+
+.materialList{
+    padding-top: 1%;
 }
