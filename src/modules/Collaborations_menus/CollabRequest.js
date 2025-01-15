@@ -40,6 +40,16 @@ const collaborationRequests = [
     filePath: pdfFile,
     description:
       'An entry-level guide exploring the basics of quantum computing, its principles, and potential applications in solving complex computational problems.',
+    coAuthors: [
+      {
+        name: 'Dr. Brian Adams',
+        imageUrl: myImage,
+      },
+      {
+        name: 'Dr. Catherine Lee',
+        imageUrl: myImage,
+      },
+    ],
   },
   {
     authorName: 'Prof. John Doe',
@@ -47,10 +57,16 @@ const collaborationRequests = [
     discipline: 'Artificial Intelligence',
     institution: 'Global Institute of AI',
     dateRequested: '2024-11-20',
-    email: 'alice.smith@sample.com',
+    email: 'john.doe@sample.com',
     imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-4.webp',
     description:
       'A comprehensive discussion on cutting-edge algorithms powering artificial intelligence, with practical use cases in machine learning and optimization.',
+    coAuthors: [
+      {
+        name: 'Dr. Susan Clark',
+        imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-7.webp',
+      },
+    ],
   },
   {
     authorName: 'Dr. Emily White',
@@ -58,21 +74,16 @@ const collaborationRequests = [
     discipline: 'Data Science',
     institution: 'National Data Academy',
     dateRequested: '2024-11-18',
-    email: 'alice.smith@sample.com',
+    email: 'emily.white@sample.com',
     imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp',
     description:
       'An introductory material designed to help beginners understand the fundamental concepts and tools used in data science, including Python and R.',
-  },
-  {
-    authorName: 'Mr. Michael Brown',
-    materialTitle: 'Cybersecurity Essentials',
-    discipline: 'Cybersecurity',
-    institution: 'SecureTech University',
-    dateRequested: '2024-11-15',
-    email: 'alice.smith@sample.com',
-    imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp',
-    description:
-      'A foundational course on cybersecurity concepts, best practices, and threat prevention techniques essential for protecting digital infrastructure.',
+    coAuthors: [
+      {
+        name: 'Mr. Thomas Brown',
+        imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-3.webp',
+      },
+    ],
   },
   {
     authorName: 'Ms. Laura Green',
@@ -80,43 +91,20 @@ const collaborationRequests = [
     discipline: 'Web Development',
     institution: 'Institute of Creative Technologies',
     dateRequested: '2024-11-12',
-    email: 'alice.smith@sample.com',
+    email: 'laura.green@sample.com',
     imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-3.webp',
     description:
       'A beginner-friendly resource on web development, focusing on HTML, CSS, and JavaScript, aimed at creating responsive and interactive websites.',
-  },
-  {
-    authorName: 'Dr. Robert Black',
-    materialTitle: 'Cloud Computing Fundamentals',
-    discipline: 'Cloud Computing',
-    institution: 'CloudTech Institute',
-    dateRequested: '2024-11-10',
-    email: 'alice.smith@sample.com',
-    imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp',
-    description:
-      'An overview of cloud computing principles, including cloud services, deployment models, and key providers like AWS and Azure.',
-  },
-  {
-    authorName: 'Prof. Sarah Blue',
-    materialTitle: 'Mobile Application Development',
-    discipline: 'Software Development',
-    institution: 'Global IT College',
-    dateRequested: '2024-11-08',
-    email: 'alice.smith@sample.com',
-    imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-3.webp',
-    description:
-      'An in-depth material on creating mobile applications using modern frameworks, focusing on both Android and iOS platforms.',
-  },
-  {
-    authorName: 'Mr. David Clark',
-    materialTitle: 'Network Administration Basics',
-    discipline: 'Networking',
-    institution: 'Networking Academy',
-    dateRequested: '2024-11-05',
-    email: 'alice.smith@sample.com',
-    imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp',
-    description:
-      'A primer on network administration, covering LAN/WAN configuration, troubleshooting, and maintenance of network hardware and software.',
+    coAuthors: [
+      {
+        name: 'Mr. Kevin Parker',
+        imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-4.webp',
+      },
+      {
+        name: 'Ms. Olivia Brown',
+        imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp',
+      },
+    ],
   },
   {
     authorName: 'Dr. Rachel Gray',
@@ -124,10 +112,33 @@ const collaborationRequests = [
     discipline: 'Cybersecurity',
     institution: 'TechSecure University',
     dateRequested: '2024-11-03',
-    email: 'alice.smith@sample.com',
+    email: 'rachel.gray@sample.com',
     imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-8.webp',
     description:
       'A specialized resource on ethical hacking methodologies and penetration testing techniques to identify and mitigate vulnerabilities in systems.',
+    coAuthors: [
+      {
+        name: 'Prof. Samuel White',
+        imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp',
+      },
+    ],
+  },
+  {
+    authorName: 'Dr. Robert Black',
+    materialTitle: 'Cloud Computing Fundamentals',
+    discipline: 'Cloud Computing',
+    institution: 'CloudTech Institute',
+    dateRequested: '2024-11-10',
+    email: 'robert.black@sample.com',
+    imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp',
+    description:
+      'An overview of cloud computing principles, including cloud services, deployment models, and key providers like AWS and Azure.',
+    coAuthors: [
+      {
+        name: 'Dr. Margaret Grey',
+        imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-2.webp',
+      },
+    ],
   },
   {
     authorName: 'Prof. Henry Gold',
@@ -135,10 +146,20 @@ const collaborationRequests = [
     discipline: 'Blockchain',
     institution: 'Blockchain Academy',
     dateRequested: '2024-11-01',
-    email: 'alice.smith@sample.com',
+    email: 'henry.gold@sample.com',
     imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-8.webp',
     description:
       'An introductory guide to blockchain technology, its architecture, consensus mechanisms, and applications in industries like finance and supply chain.',
+    coAuthors: [
+      {
+        name: 'Mr. Ethan Stone',
+        imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-1.webp',
+      },
+      {
+        name: 'Ms. Sophia Green',
+        imageUrl: 'https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-4.webp',
+      },
+    ],
   },
 ]
 
@@ -225,7 +246,7 @@ const CollabRequest = () => {
   return (
     <Container fluid>
       <Row className="d-flex">
-        <Col md="12" xl="10">
+        <Col md="12" xl="10" style={{ paddingBottom: '3%' }}>
           <Card>
             <CardHeader className="p-3 d-flex justify-content-between align-items-center">
               <h5 className="mb-0 d-flex align-items-center">
@@ -268,7 +289,7 @@ const CollabRequest = () => {
               >
                 <Table className="mb-0">
                   <TableHead>
-                    <tr>
+                    <tr style={{ textAlign: 'center' }}>
                       <th scope="col">Details</th>
                       <th scope="col">Institution</th>
                       <th scope="col">Date</th>
@@ -364,7 +385,6 @@ const CollabRequest = () => {
                 onPageChange={handlePageClick}
                 containerClassName={'pagination-container'}
                 pageClassName={'page-item'}
-                pageLinkClassName={'page-link'}
                 activeClassName={'active'}
                 disabledClassName={'disabled'}
               />
@@ -373,8 +393,8 @@ const CollabRequest = () => {
         </Col>
 
         <Col className="align-items-start">
-          <Row className="mb-3">
-            <Card className="shadow-sm">
+          <Row className="responsive-layout mb-3">
+            <Card className="shadow-sm card-width">
               <CardBody className="d-flex align-items-center justify-content-between">
                 <div>
                   <FontAwesomeIcon
@@ -389,10 +409,8 @@ const CollabRequest = () => {
                 </div>
               </CardBody>
             </Card>
-          </Row>
 
-          <Row className="mb-3">
-            <Card className="shadow-sm">
+            <Card className="shadow-sm card-width">
               <CardBody className="d-flex align-items-center justify-content-between">
                 <div>
                   <FontAwesomeIcon
@@ -407,10 +425,8 @@ const CollabRequest = () => {
                 </div>
               </CardBody>
             </Card>
-          </Row>
 
-          <Row className="mb-3">
-            <Card className="shadow-sm">
+            <Card className="shadow-sm card-width">
               <CardBody className="d-flex align-items-center justify-content-between">
                 <div>
                   <FontAwesomeIcon

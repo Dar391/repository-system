@@ -1,92 +1,85 @@
-
-
- .section2{
-    background-color: whitesmoke;
-    height: auto;
+.section2 {
+  background-color: whitesmoke;
+  height: auto;
 }
 
-.heading{
+.heading {
   background-color: rgb(146, 12, 12);
   padding: 1%;
 }
 
-
-
- .headings3{
-    font-size: 31px;
-    font-weight: bolder;
-    color: whitesmoke;
-    margin-bottom: 0%;
+.headings3 {
+  font-size: 31px;
+  font-weight: bolder;
+  color: whitesmoke;
+  margin-bottom: 0%;
 }
 
- .subtitles1{
+.subtitles1 {
   color: white;
   font-size: 14px;
 }
-.searchHeader{
+.searchHeader {
   align-items: center;
   justify-content: center;
   margin: 1% 1% 0% 1%;
 }
 
- .card2:hover{
-    transform: scale(1.05);
+.card2:hover {
+  transform: scale(1.05);
 }
 
- .accessedMaterials .card2{
-    background-color: white;
-    border: 1px solid rgb(196, 192, 192);
-    color: black;
-    text-align: left;
-    box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.1);
-    height: auto;
+.accessedMaterials .card2 {
+  background-color: white;
+  border: 1px solid rgb(196, 192, 192);
+  color: black;
+  text-align: left;
+  box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.1);
+  height: auto;
 }
 
-.accessedMaterials .btnOpen{
-    color: rgb(171, 61, 61);
-    background-color: transparent;
-    border: 0;
-    text-align: left;
-    display: block;
-    font-size:smaller ;
+.accessedMaterials .btnOpen {
+  color: rgb(171, 61, 61);
+  background-color: transparent;
+  border: 0;
+  text-align: left;
+  display: block;
+  font-size: smaller;
 }
 
- .accessedMaterials .cardDesc{
-    text-align: left;
-    font-size: smaller;
+.accessedMaterials .cardDesc {
+  text-align: left;
+  font-size: smaller;
 }
 
- .search-wrapper{
-    position: relative;
-    width: 100%;
-   
+.search-wrapper {
+  position: relative;
+  width: 100%;
 }
 
- .search-btn{
+.search-btn {
   position: absolute;
   top: 50%;
   right: 10px;
   transform: translateY(-50%);
   border: none;
   background: transparent;
-  color:rgb(146, 12, 12);
+  color: rgb(146, 12, 12);
   cursor: pointer;
 }
 
- .search-input{
-    background-color: transparent;
-    border: 2px solid black;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+.search-input {
+  background-color: transparent;
+  border: 2px solid black;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.search-input::placeholder{
-    color: black;
-    opacity: 0.5;
+.search-input::placeholder {
+  color: black;
+  opacity: 0.5;
 }
 
-
-
- .pagination-container{
+.pagination-container {
   display: flex;
   justify-content: center;
   align-items: baseline;
@@ -96,13 +89,11 @@
   border-radius: 50px; /* Pill shape */
   width: fit-content; /* Ensures the container fits its contents */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for aesthetics */
-  margin: auto ;
-  
-  
+  margin: auto;
 }
 
- .more-btn{
-    background-color: rgb(128, 61, 59);
+.more-btn {
+  background-color: rgb(128, 61, 59);
   color: white;
   border-radius: 50px;
   padding: 5px 15px;
@@ -113,9 +104,9 @@
   cursor: pointer;
 }
 
- .next-btn{
-   background-color: transparent;
-  color:black;
+.next-btn {
+  background-color: transparent;
+  color: black;
   border: none;
   font-size: 15px;
   display: flex;
@@ -126,39 +117,77 @@
   transition: background-color 0.3s ease;
 }
 
- .next-btn .next-arrow{
-    font-size: 18px;
+.next-btn .next-arrow {
+  font-size: 18px;
 }
 
- .more-btn:hover{
-    background-color: #656565;
+.more-btn:hover {
+  background-color: #656565;
 }
 
- .next-btn:hover{
-    background-color: #b0c3ff;
+.next-btn:hover {
+  background-color: #b0c3ff;
 }
 
 .icon-group {
-    position: absolute;
-    top: 8px;   /* Position it near the top of the image */
-    right: 8px; /* Position it near the right of the image */
-    display: flex;
-    gap: 10px;
-    background-color: rgba(255, 255, 255, 0.7); /* Slight white background for visibility */
-    padding: 5px;
-    border-radius: 5px;
+  position: absolute;
+  top: 8px; /* Position it near the top of the image */
+  right: 8px; /* Position it near the right of the image */
+  display: flex;
+  gap: 10px;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.7
+  ); /* Slight white background for visibility */
+  padding: 5px;
+  border-radius: 5px;
 }
 
- .icon-group .fa-icon {
-    margin-left: 5px; /* space between icons */
+.icon-group .fa-icon {
+  margin-left: 5px; /* space between icons */
 }
 
- .icon-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-  
-  .card {
-    position: relative;
-  }
+.icon-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.card {
+  position: relative;
+}
+
+.page-container {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.item-page {
+  margin: 0 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  color: #333;
+  transition: background-color 0.3s;
+}
+
+.page-item:hover {
+  background-color: #eee;
+}
+
+.activePage {
+  background-color: #0056b3;
+  color: white !important;
+}
+
+.disabled-page {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

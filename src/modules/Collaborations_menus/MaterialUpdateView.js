@@ -1,9 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, Col, Modal, Row } from 'react-bootstrap'
-import { PDFViewer } from '@react-pdf/renderer'
-import pdfFile from '../../assets/Prototyping.pdf'
-import '../../styles/collaboration.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faFacebook,
   faLinkedin,
@@ -11,13 +7,19 @@ import {
   faResearchgate,
   faTwitter,
 } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { TextField } from '@mui/material'
-const MaterialRequestModal = ({
+import DocViewer from 'react-doc-viewer'
+
+const MaterialUpdateView = ({
   show,
   handleClose,
   actionType,
-  collaborationData,
+  materialData,
 }) => {
+  console.log('Material Data:', materialData)
+  console.log('Filepath:', materialData.filepath)
+
   return (
     <Modal
       show={show}
@@ -29,16 +31,17 @@ const MaterialRequestModal = ({
       <Modal.Header closeButton>
         <Modal.Title> Material Preview</Modal.Title>
       </Modal.Header>
+
       <Modal.Body>
-        {actionType === 'View' && collaborationData ? (
+        {actionType === 'View' && materialData ? (
           <Row>
             <Col className="metadata">
               <div>
                 <div className="d-flex align-items-center">
                   <img
-                    src={collaborationData.imageUrl}
+                    src={materialData.imageUrl}
                     alt="profile"
-                    style={{ width: '10rem', height: '10rem' }}
+                    style={{ width: '8rem', height: '8rem' }}
                     className="shadow-1-strong rounded-circle"
                   />
                   <div style={{ paddingLeft: '2%' }}>
@@ -48,19 +51,25 @@ const MaterialRequestModal = ({
                         marginBottom: '0%',
                       }}
                     >
-                      {collaborationData.authorName}
+                      {materialData.authorName}
                     </p>
                     <p
                       style={{
                         fontSize: '10px',
+                        marginBottom: '0%',
                       }}
                     >
-                      {collaborationData.email}
+                      {materialData.email}
                     </p>
-                    <p style={{ fontStyle: 'italic' }}>
-                      {collaborationData.description}
+                    <p
+                      style={{
+                        fontStyle: 'italic',
+                        fontSize: '12px',
+                        marginBottom: '0%',
+                      }}
+                    >
+                      {materialData.description}
                     </p>
-
                     <div>
                       <FontAwesomeIcon
                         icon={faFacebook}
@@ -96,11 +105,11 @@ const MaterialRequestModal = ({
                   >
                     Collaborators:
                   </p>
-                  {Array.isArray(collaborationData.coAuthors) ? (
+                  {Array.isArray(materialData.collaborators) ? (
                     <div
                       style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}
                     >
-                      {collaborationData.coAuthors.map((collab, index) => (
+                      {materialData.collaborators.map((collab, index) => (
                         <div
                           key={index}
                           style={{
@@ -109,7 +118,6 @@ const MaterialRequestModal = ({
                             gap: '0.5rem',
                             marginBottom: '0.5rem',
                           }}
-                          className="viewAll"
                         >
                           <img
                             src={collab.imageUrl}
@@ -121,7 +129,7 @@ const MaterialRequestModal = ({
                             style={{ fontSize: '12px' }}
                             className="hoverText"
                           >
-                            {collab.name}
+                            {collab.filePath}
                           </span>
                         </div>
                       ))}
@@ -131,38 +139,61 @@ const MaterialRequestModal = ({
                   )}
                 </div>
 
-                <div style={{ paddingTop: '30px', paddingLeft: '2%' }}>
-                  <div>
-                    <span style={{ fontWeight: 'bold' }}>Material: </span>
-                    <p>{collaborationData.materialTitle}</p>
-                  </div>
+                <Row style={{ padding: '3% 0 0 2%' }}>
+                  <Col>
+                    <div>
+                      <span style={{ fontWeight: 'bold' }}>Material: </span>
+                      <p>{materialData.materialTitle}</p>
+                    </div>
 
-                  <div>
-                    <span style={{ fontWeight: 'bold' }}>Institution: </span>
-                    <p>{collaborationData.institution}</p>
-                  </div>
-
-                  <div
-                    className="d-flex align-items-center "
-                    style={{ gap: '25%' }}
-                  >
                     <div>
                       <span style={{ fontWeight: 'bold' }}>Disciplines: </span>
-                      <p>{collaborationData.discipline}</p>
+                      <p>{materialData.discipline}</p>
+                    </div>
+
+                    <div>
+                      <span style={{ fontWeight: 'bold' }}>Pages: </span>
+                      <p>12</p>
                     </div>
 
                     <div>
                       <span style={{ fontWeight: 'bold' }}>
-                        Date requested:{' '}
+                        Document type:{' '}
                       </span>
-                      <p>{collaborationData.dateRequested}</p>
+                      <p>.pdf </p>
                     </div>
-                  </div>
+                  </Col>
 
+                  <Col>
+                    <div>
+                      <span style={{ fontWeight: 'bold' }}>Institution: </span>
+                      <p>{materialData.institution}</p>
+                    </div>
+
+                    <div>
+                      <span style={{ fontWeight: 'bold' }}>Date updated: </span>
+                      <p>{materialData.dateRequested}</p>
+                    </div>
+
+                    <div>
+                      <span style={{ fontWeight: 'bold' }}>Characters: </span>
+                      <p>1247</p>
+                    </div>
+
+                    <div>
+                      <span style={{ fontWeight: 'bold' }}>Paper size: </span>
+                      <p>A4</p>
+                    </div>
+                  </Col>
+                </Row>
+
+                <div style={{ paddingLeft: '2%' }}>
                   <div>
                     <TextField
+                      disabled
                       id="standard-multiline-static"
-                      label="Want to send message to Alice Smith?"
+                      label="Author note"
+                      defaultValue={materialData.authorNote}
                       variant="filled"
                       multiline
                       rows={3}
@@ -174,33 +205,15 @@ const MaterialRequestModal = ({
               </div>
             </Col>
 
-            <Col className="materialView">
-              <div style={{ flex: 1, minWidth: '400px' }}>
-                <iframe
-                  src={pdfFile}
-                  width="100%"
-                  height="500"
-                  title="sample"
-                />
-              </div>
+            <Col>
+              <DocViewer />
             </Col>
           </Row>
         ) : (
           <> </>
         )}
-        {actionType === 'Accept' && (
-          <p>
-            Are you sure you want to {actionType.toLowerCase()} this
-            collaboration request?
-          </p>
-        )}
-        {actionType === 'Reject' && (
-          <p>
-            Are you sure you want to {actionType.toLowerCase()} this
-            collaboration request?
-          </p>
-        )}
       </Modal.Body>
+
       <Modal.Footer>
         {actionType === 'View' && (
           <>
@@ -227,4 +240,4 @@ const MaterialRequestModal = ({
   )
 }
 
-export default MaterialRequestModal
+export default MaterialUpdateView

@@ -21,9 +21,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import materialData from '../data/materialData'
 import { Link } from 'react-router-dom'
-import { width } from '@fortawesome/free-brands-svg-icons/fa42Group'
-
+import { useNavigate } from 'react-router-dom'
 const BrowsePage = () => {
+  const navigate = useNavigate()
   const limitText = (text, limit) => {
     return text.length > limit ? text.substring(0, limit) + '...' : text
   }
@@ -52,6 +52,10 @@ const BrowsePage = () => {
     'Material Type(A-Z)',
     'Material Type(Z-A)',
   ]
+
+  const handleClick = () => {
+    navigate('/open-material') // Navigate to OpenMaterial.js
+  }
 
   return (
     <Container fluid className="BrowsePage">
@@ -398,7 +402,7 @@ const BrowsePage = () => {
                         </CardText>
 
                         <div className="d-flex justify-content-start mt-auto">
-                          <button className="btnOpen ">
+                          <button className="btnOpen " onClick={handleClick}>
                             Open material
                             <FontAwesomeIcon
                               icon={faArrowRight}

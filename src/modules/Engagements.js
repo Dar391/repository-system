@@ -6,6 +6,7 @@ import UserEngagements from './Engagements_menus/UserEngagements'
 
 const Engagements = () => {
   const [activeComponent, setActiveComponent] = useState('material')
+  const [activeMenu, setActiveMenu] = useState('engagements')
   const renderComponent = () => {
     if (activeComponent === 'material') {
       return <MaterialsEngagement />
@@ -20,6 +21,7 @@ const Engagements = () => {
           <Sidebar
             setActiveComponent={setActiveComponent}
             activeComponent={activeComponent}
+            activeMenuType={activeMenu}
           />
         </Col>
 

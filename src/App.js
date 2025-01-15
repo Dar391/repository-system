@@ -12,6 +12,7 @@ import { Link as ScrollLink } from 'react-scroll'
 import Profile from './modules/Profile'
 import Collaborations from './modules/Collaborations'
 import AboutUs from './modules/AboutUs'
+import OpenMaterial from './modules/OpenMaterial'
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
 
@@ -181,6 +182,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/collaboration-activity" element={<Collaborations />} />
           <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/open-material" element={<OpenMaterial />} />
         </Routes>
 
         <footer

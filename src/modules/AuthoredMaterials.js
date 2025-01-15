@@ -16,11 +16,18 @@ import {
   CardTitle,
 } from 'react-bootstrap'
 import materialData from '../data/materialData'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import ModalAddMaterials from './ModalAddMaterials'
 
 const AuthoredMaterials = () => {
+  const navigate = useNavigate()
   const [activeOption, setActiveOption] = useState('All materials')
   const [hoveredOption, setHoveredOption] = useState(null)
+  const [showModal, setShowModal] = useState(false)
+
+  const handleCloseModal = () => {
+    setShowModal(false)
+  }
 
   const handleSelect = (selectedItem) => {
     setActiveOption(selectedItem)
@@ -36,6 +43,13 @@ const AuthoredMaterials = () => {
 
   const options = ['All materials', 'Most viewed', 'Highest rated', 'Newest']
 
+  const handleAddClick = () => {
+    setShowModal(true)
+  }
+
+  const handleClick = () => {
+    navigate('/open-material')
+  }
   return (
     <Container fluid className="myMaterials">
       <Row className="sections" style={{ overflow: 'hidden' }}>
@@ -128,7 +142,9 @@ const AuthoredMaterials = () => {
                   </Col>
 
                   <Col className="text-end" style={{ paddingRight: '2%' }}>
-                    <button className="btnAdd">Add material</button>
+                    <button className="btnAdd" onClick={() => handleAddClick()}>
+                      Add material
+                    </button>
                   </Col>
                 </Row>
                 <Row style={{ padding: '2%' }}>
@@ -182,7 +198,7 @@ const AuthoredMaterials = () => {
                             and make up the bulk of the card‘s content.
                           </CardText>
 
-                          <button className="btnOpen">
+                          <button className="btnOpen" onClick={handleClick}>
                             Open material
                             <FontAwesomeIcon
                               icon={faArrowRight}
@@ -208,6 +224,10 @@ const AuthoredMaterials = () => {
           </Col>
         </Col>
       </Row>
+
+      {showModal && (
+        <ModalAddMaterials show={showModal} handleClose={handleCloseModal} />
+      )}
     </Container>
   )
 }

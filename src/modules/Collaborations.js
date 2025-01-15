@@ -6,6 +6,7 @@ import Sidebar from './Sidebar'
 
 const Collaborations = () => {
   const [activeComponent, setActiveComponent] = useState('request')
+  const [activeMenu, setActiveMenu] = useState('collaboration')
 
   const renderComponent = () => {
     if (activeComponent === 'request') {
@@ -22,6 +23,7 @@ const Collaborations = () => {
           <Sidebar
             setActiveComponent={setActiveComponent}
             activeComponent={activeComponent}
+            activeMenuType={activeMenu}
           />
         </Col>
 

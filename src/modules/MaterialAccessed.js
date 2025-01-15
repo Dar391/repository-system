@@ -7,6 +7,7 @@ import {
   faEye,
 } from '@fortawesome/free-solid-svg-icons'
 import {
+  Button,
   Card,
   CardBody,
   CardSubtitle,
@@ -20,11 +21,22 @@ import {
 } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import materialData from '../data/materialData'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import ModalListMonthlyAccessed from './ModalListMonthlyAccessed'
+import ModalDailyAccessed from './ModalDailyAccessed'
 
 const MaterialAccessed = () => {
+  const navigate = useNavigate()
   const [activeOption, setActiveOption] = useState('All materials')
   const [hoveredOption, setHoveredOption] = useState(null)
+  const [showModal1, setShowModal1] = useState(false)
+  const [showModal2, setShowModal2] = useState(false)
+
+  const handleShow = () => setShowModal1(true)
+  const handleClose = () => setShowModal1(false)
+
+  const handleShow1 = () => setShowModal2(true)
+  const handleClose1 = () => setShowModal2(false)
 
   const handleSelect = (selectedItem) => {
     setActiveOption(selectedItem)
@@ -39,6 +51,10 @@ const MaterialAccessed = () => {
   }
 
   const options = ['All materials', 'Most viewed', 'Highest rated', 'Newest']
+
+  const handleClick = () => {
+    navigate('/open-material')
+  }
 
   return (
     <Container fluid className="accessedMaterials">
@@ -132,18 +148,27 @@ const MaterialAccessed = () => {
                       {' '}
                       You have accessed 25 materials this month{' '}
                     </p>
-                    <Link to="/" className="Link ms-2">
-                      See list
-                    </Link>
+                    <Button variant="link" onClick={handleShow}>
+                      See list{' '}
+                    </Button>
                   </div>
                   <div className="d-flex justify-content-end align-items-center ">
                     <p style={{ color: 'gray', marginBottom: '0%' }}>
                       Last accesssed on:
                     </p>
-                    <Link to="/" className="Link ms-2">
+                    <Button variant="link" onClick={handleShow1}>
                       October 23, 2024
-                    </Link>
+                    </Button>
                   </div>
+                  <ModalListMonthlyAccessed
+                    show={showModal1}
+                    handleClose={handleClose}
+                  />
+
+                  <ModalDailyAccessed
+                    show={showModal2}
+                    handleClose={handleClose1}
+                  />
                 </Col>
               </Row>
             </Col>
@@ -199,7 +224,7 @@ const MaterialAccessed = () => {
                         make up the bulk of the card‘s content.
                       </CardText>
 
-                      <button className="btnOpen">
+                      <button className="btnOpen" onClick={handleClick}>
                         Open material
                         <FontAwesomeIcon
                           icon={faArrowRight}

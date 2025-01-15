@@ -3,7 +3,7 @@ import { ListGroup } from 'react-bootstrap'
 import profileImage from '../assets/image.jpg'
 import '../styles/engagements.css'
 
-const Sidebar = ({ setActiveComponent, activeComponent }) => {
+const Sidebar = ({ setActiveComponent, activeComponent, activeMenuType }) => {
   const [activeIndex, setActiveIndex] = useState(0)
   const Menus = [
     {
@@ -25,14 +25,14 @@ const Sidebar = ({ setActiveComponent, activeComponent }) => {
       key: 'request',
     },
     {
-      title: 'Collaboration Updates',
+      title: 'Material Update',
       src: 'collaboration-updates',
-      key: 'updates',
+      key: 'update',
     },
   ]
 
   console.log('Current value of setActiveComponent:', setActiveComponent)
-  const activeMenu = activeComponent === 'material' ? Menus : MenuCollab
+  const activeMenu = activeMenuType === 'engagements' ? Menus : MenuCollab
 
   return (
     <div className="d-flex Sidebar ">

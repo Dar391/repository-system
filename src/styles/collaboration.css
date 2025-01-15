@@ -28,7 +28,7 @@
 }
 
 /* Active page styling */
-.page-item.active .page-link {
+.page-item.activek {
   background-color: #0056b3;
   color: #fff;
   font-weight: bold;
@@ -36,7 +36,7 @@
 }
 
 /* Disabled page link styling */
-.page-item.disabled .page-link {
+.page-item.disabled {
   background-color: #ddd;
   color: #bbb;
   pointer-events: none;
@@ -50,4 +50,30 @@
 
 .metadata {
   border-right: 2px solid rgb(234, 229, 229);
+}
+
+/* Default: Column layout for larger screens */
+.responsive-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Spacing between cards */
+}
+
+.card-width {
+  width: 205px; /* Fixed card width */
+}
+
+/* For tablets and phones: Row layout */
+@media (max-width: 1200px) {
+  .responsive-layout {
+    flex-direction: row;
+    flex-wrap: wrap; /* Allows wrapping if space is insufficient */
+    justify-content: space-around; /* Distributes cards evenly */
+  }
+
+  .card-width {
+    width: auto; /* Cards take up available space */
+    flex: 1 1 calc(33% - 10px); /* Adjust card width dynamically */
+    margin-bottom: 10px; /* Space between rows of cards */
+  }
 }
