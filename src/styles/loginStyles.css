@@ -1,0 +1,12 @@
+.card1 {
+  background-color: whitesmoke;
+}
+
+.nav-link:hover {
+  background-color: gainsboro;
+}
+
+.btn {
+  background-color: rgb(146, 12, 12);
+  color: whitesmoke;
+}

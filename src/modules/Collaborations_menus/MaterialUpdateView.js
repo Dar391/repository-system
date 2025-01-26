@@ -9,7 +9,8 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { TextField } from '@mui/material'
-import DocViewer from 'react-doc-viewer'
+import pdfFile from '../../assets/Prototyping.pdf'
+import { pdf } from '@react-pdf/renderer'
 
 const MaterialUpdateView = ({
   show,
@@ -206,7 +207,14 @@ const MaterialUpdateView = ({
             </Col>
 
             <Col>
-              <DocViewer />
+              <div style={{ flex: 1, minWidth: '400px' }}>
+                <iframe
+                  src={pdfFile}
+                  width="100%"
+                  height="500"
+                  title="Material"
+                />
+              </div>
             </Col>
           </Row>
         ) : (

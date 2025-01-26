@@ -13,8 +13,13 @@ import Profile from './modules/Profile'
 import Collaborations from './modules/Collaborations'
 import AboutUs from './modules/AboutUs'
 import OpenMaterial from './modules/OpenMaterial'
+import '../src/styles/topNavStyle.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isScrollToAbout, setIsScrollToAbout] = useState(false)
 
   const handleLogout = () => {
     setIsAuthenticated(false)
@@ -31,11 +36,14 @@ function App() {
     }
   }
 
+  const handleScrollToAbout = () => {
+    setIsScrollToAbout(true)
+  }
   return (
     <Router>
       <div className="main">
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-          <div className="container">
+        <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
+          <Container>
             <Link className="navbar-brand" to="#">
               <img
                 src={logo}
@@ -46,133 +54,113 @@ function App() {
               />
             </Link>
 
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-target="#navbarNavDropdown"
-              aria-controls="navbarNavDropdown"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
+            <Navbar.Toggle aria-controls="navbarNavDropdown" />
+            <Navbar.Collapse id="navbarNavDropdown">
+              <Nav className="me-auto">
+                <Nav.Link
+                  className="me-2"
+                  as={Link}
+                  to="/home"
+                  style={{ color: 'white' }}
+                >
+                  Home
+                </Nav.Link>
+                <Nav.Link
+                  className="me-2"
+                  as={Link}
+                  to="/browse"
+                  style={{ color: 'white' }}
+                >
+                  Browse
+                </Nav.Link>
+                <Nav.Link
+                  as={ScrollLink}
+                  to="about-us"
+                  smooth
+                  duration={500}
+                  onClick={handleScrollToAbout}
+                  style={{ color: 'white' }}
+                  className="me-2"
+                >
+                  About HahibawHub
+                </Nav.Link>
 
-            <div
-              className="collapse navbar-collapse justify-content-end"
-              id="navbarNavDropdown"
-            >
-              <ul className="navbar-nav">
-                <li className="nav-item active me-3">
-                  <Link className="nav-link" to="/home">
-                    Home
-                  </Link>
-                </li>
-
-                <li className="nav-item me-3">
-                  <Link className="nav-link" to="/browse">
-                    {' '}
-                    Browse
-                  </Link>
-                </li>
-
-                {isAuthenticated ? (
+                {isAuthenticated && (
                   <>
-                    <li className="nav-item me-3">
-                      <Link className="nav-link" to="/engagement">
-                        Engagement
-                      </Link>
-                    </li>
+                    <Nav.Link
+                      as={Link}
+                      to="/engagement"
+                      style={{ color: 'white' }}
+                      className="me-2"
+                    >
+                      Engagement
+                    </Nav.Link>
 
-                    <li className="nav-item dropdown me-3">
-                      <Link
-                        className="nav-link dropdown-toggle"
-                        to="\"
-                        id="DropDownMaterials"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        My materials
-                      </Link>
-                      <div
-                        className="dropdown-menu"
-                        aria-labelledby="DropDownMaterials"
-                      >
-                        <Link className="dropdown-item" to="/my-materials">
-                          Authored
-                        </Link>
+                    <NavDropdown
+                      title="My materials"
+                      id="navbarScrollingDropdown"
+                      className="me-2"
+                    >
+                      <NavDropdown.Item as={Link} to="/my-materials">
+                        Authored
+                      </NavDropdown.Item>
+                      <NavDropdown.Item as={Link} to="/accessed-Materials">
+                        Accessed Materials
+                      </NavDropdown.Item>
+                    </NavDropdown>
 
-                        <Link
-                          className="dropdown-item"
-                          to="/accessed-Materials"
-                        >
-                          Accessed Materials
-                        </Link>
-                      </div>
-                    </li>
-
-                    <li className="nav-item dropdown me-3">
-                      <Link
-                        className="nav-link dropdown-toggle"
-                        to="\account"
-                        id="DropDownAccount"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        Account
-                      </Link>
-
-                      <div
-                        className="dropdown-menu"
-                        aria-labelledby="DropDownAccount"
-                      >
-                        <Link className="dropdown-item" to="/profile">
-                          {' '}
-                          Profile
-                        </Link>
-                        <Link
-                          className="dropdown-item"
-                          to="/collaboration-activity"
-                        >
-                          {' '}
-                          Collaborations
-                        </Link>
-                        <Link
-                          className="dropdown-item"
-                          to="#"
-                          onClick={handleLogout}
-                        >
-                          {' '}
-                          Log-out
-                        </Link>
-                      </div>
-                    </li>
+                    <Nav.Link
+                      as={Link}
+                      to="/collaboration-activity"
+                      style={{ color: 'white' }}
+                    >
+                      Collaborations
+                    </Nav.Link>
                   </>
-                ) : null}
+                )}
+              </Nav>
 
-                <li className="nav-item">
-                  <ScrollLink
-                    className="nav-link"
-                    to="about-us"
-                    smooth={true}
-                    duration={500}
-                    offset={-50}
-                    onClick={() => scrollIntoSection('about-us')}
+              <Nav>
+                {isAuthenticated && (
+                  <NavDropdown
+                    style={{
+                      backgroundColor: 'rgb(146, 12, 12)',
+                      borderRadius: '7px',
+                    }}
+                    title={
+                      <span>
+                        <FontAwesomeIcon
+                          icon={faUser}
+                          style={{ paddingRight: '8px' }}
+                        />
+                        My Account
+                      </span>
+                    }
+                    id="dropdown-account"
                   >
-                    About Us
-                  </ScrollLink>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
+                    <NavDropdown.Item as={Link} to="/profile">
+                      My Profile
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as="button" onClick={handleLogout}>
+                      Log-out
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                )}
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
 
         <Routes>
           <Route
             path="/home"
-            element={<Home setIsAuthenticated={handleLogin} />}
+            element={
+              <Home
+                setIsAuthenticated={handleLogin}
+                isScrollToAbout={isScrollToAbout}
+                setIsScrollToAbout={setIsScrollToAbout}
+              />
+            }
           />
           <Route path="/browse" element={<BrowserMaterial />} />
           <Route path="/discipline/:field" element={<Discipline />} />
@@ -181,7 +169,15 @@ function App() {
           <Route path="/accessed-materials" element={<MaterialAccessed />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/collaboration-activity" element={<Collaborations />} />
-          <Route path="/about-us" element={<AboutUs />} />
+          <Route
+            path="/about-us"
+            element={
+              <Home
+                isScrollToAbout={isScrollToAbout}
+                setIsScrollToAbout={setIsScrollToAbout}
+              />
+            }
+          />
           <Route path="/open-material" element={<OpenMaterial />} />
         </Routes>
 

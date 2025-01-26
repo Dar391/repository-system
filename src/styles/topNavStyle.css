@@ -1,0 +1,20 @@
+.navbar-nav .nav-link {
+  color: #000; /* Default font color */
+  transition: all 0.3s ease; /* Smooth transition effect */
+}
+
+.navbar-nav .nav-link:hover {
+  background-color: gray; /* Hover background color */
+  color: white; /* Hover font color */
+  border-radius: 5px; /* Optional: Adds a rounded effect */
+  padding: 5px 10px; /* Optional: Adds spacing inside the link */
+}
+
+.container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.nav-style {
+  color: wheat;
+}

@@ -1,98 +1,86 @@
-.myMaterials{
-   background-color: whitesmoke;
-
+.myMaterials {
+  background-color: whitesmoke;
 }
 
-.myMaterials .searchHeader{
-    align-items: center;
-    justify-content: center;
-    margin: 1% 1% 0% 1%;
+.myMaterials .searchHeader {
+  align-items: center;
+  justify-content: center;
+  margin: 1% 1% 0% 1%;
 }
 
-
-.myMaterials .headings2{
-    font-size: 30px;
-    font-weight: bolder;
-    color: white
+.myMaterials .headings2 {
+  font-size: 30px;
+  font-weight: bolder;
+  color: white;
 }
 
-
-.myMaterials .subtitles1{
-    color: white;
-    font-size: 14px;
+.myMaterials .subtitles1 {
+  color: white;
+  font-size: 14px;
 }
 
-.myMaterials .card{
-    background-color: whitesmoke;
-    border: 1px solid rgb(171, 61, 61);
-    color: black;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    transition: transform 0.2s;
+.myMaterials .card {
+  background-color: whitesmoke;
+  border: 1px solid rgb(196, 192, 192);
+  color: black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s;
 }
 
-.myMaterials .card:hover{
-    transform: scale(1.05);
+.myMaterials .card:hover {
+  transform: scale(1.05);
 }
 
-
-
-.btnAdd{
-    background-color: rgb(228, 197, 158);
-     border: none;
-     padding: 10px 20px;
-     margin: 4px;
-     width: auto;
-     border-radius: 10px; /* Add rounded corners */
-     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease;
-    color: black;
-    height: 38px;
-    white-space: nowrap;
-    line-height: 1;
-    font-size: smaller;
-    }
-
-    
-
-.myMaterials .btnOpen{
-    color: rgb(171, 61, 61);
-    background-color: transparent;
-    border: 0;
-    font-size: smaller;
+.btnAdd {
+  background-color: rgb(228, 197, 158);
+  border: none;
+  padding: 10px 20px;
+  margin: 4px;
+  width: auto;
+  border-radius: 10px; /* Add rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  color: black;
+  height: 38px;
+  white-space: nowrap;
+  line-height: 1;
+  font-size: smaller;
 }
 
-.myMaterials .cardDesc{
-    text-align: left;
-    font-size: smaller;
+.myMaterials .btnOpen {
+  color: rgb(171, 61, 61);
+  background-color: transparent;
+  border: 0;
+  font-size: smaller;
 }
 
-.myMaterials .search-wrapper{
-    position: relative;
-    width: 100%;
-    
-   
+.myMaterials .cardDesc {
+  text-align: left;
+  font-size: smaller;
 }
 
-.myMaterials .search-btn{
+.myMaterials .search-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.myMaterials .search-btn {
   position: absolute;
   top: 50%;
   right: 10px;
   transform: translateY(-50%);
   border: none;
   background: transparent;
-  color:rgb(171, 61, 61);;
+  color: rgb(171, 61, 61);
   cursor: pointer;
-  
 }
 
-.myMaterials .search-input{
-    border: 2px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+.myMaterials .search-input {
+  border: 2px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
-
-
-.myMaterials .pagination-container{
+.myMaterials .pagination-container {
   display: flex;
   justify-content: center;
   align-items: baseline;
@@ -102,14 +90,13 @@
   border-radius: 50px; /* Pill shape */
   width: fit-content; /* Ensures the container fits its contents */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for aesthetics */
-  margin: auto ;
-  
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  margin: auto;
 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.myMaterials .more-btn{
-    background-color: rgb(128, 61, 59);
+.myMaterials .more-btn {
+  background-color: rgb(128, 61, 59);
   color: white;
   border-radius: 50px;
   padding: 5px 15px;
@@ -120,9 +107,9 @@
   cursor: pointer;
 }
 
-.myMaterials .next-btn{
-   background-color: transparent;
-  color:black;
+.myMaterials .next-btn {
+  background-color: transparent;
+  color: black;
   border: none;
   font-size: 15px;
   display: flex;
@@ -133,48 +120,58 @@
   transition: background-color 0.3s ease;
 }
 
-.myMaterials .next-btn .next-arrow{
-    font-size: 18px;
+.myMaterials .next-btn .next-arrow {
+  font-size: 18px;
 }
 
-.myMaterials .more-btn:hover{
-    background-color: #3a44c0;
+.myMaterials .more-btn:hover {
+  background-color: #3a44c0;
 }
 
-.myMaterials .next-btn:hover{
-    background-color: #b0c3ff;
+.myMaterials .next-btn:hover {
+  background-color: #b0c3ff;
 }
 
 .myMaterials .icon-group {
-    position: absolute;
-    top: 8px;   /* Position it near the top of the image */
-    right: 8px; /* Position it near the right of the image */
-    display: flex;
-    gap: 10px;
-    background-color: rgba(255, 255, 255, 0.7); /* Slight white background for visibility */
-    padding: 5px;
-    border-radius: 5px;
+  position: absolute;
+  top: 8px; /* Position it near the top of the image */
+  right: 8px; /* Position it near the right of the image */
+  display: flex;
+  gap: 10px;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.7
+  ); /* Slight white background for visibility */
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .myMaterials .icon-group .fa-icon {
-    margin-left: 5px; /* space between icons */
+  margin-left: 5px; /* space between icons */
 }
 
 .myMaterials .icon-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-  
-  .myMaterials .card {
-    position: relative;
-  }
-
-.materialHeader{
-    background-color: rgb(146, 12, 12);
-    padding: 0% 1% 0% 1%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
-.materialList{
-    padding-top: 1%;
+.myMaterials .card {
+  position: relative;
+}
+
+.materialHeader {
+  background-color: rgb(146, 12, 12);
+  padding: 0% 1% 0% 1%;
+}
+
+.materialList {
+  padding-top: 1%;
+}
+
+.materialBTN:hover {
+  background-color: whitesmoke;
+  color: black;
 }

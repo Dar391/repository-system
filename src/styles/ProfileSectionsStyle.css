@@ -1,0 +1,45 @@
+.sectionPadding {
+  padding: 1%;
+}
+
+.imageProf {
+  height: 10rem;
+  width: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnContribution {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.btnProfile:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+.btnEdit {
+  gap: '8px';
+  color: rgb(146, 12, 12);
+  border-color: rgb(146, 12, 12);
+  font-size: 12px;
+}
+.column1Profile {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  padding-right: 50px;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.styling {
+  font-weight: bold;
+  font-size: large;
+}

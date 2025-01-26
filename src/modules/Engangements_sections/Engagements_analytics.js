@@ -57,8 +57,8 @@ const Engagements_analytics = () => {
     { id: 5, value: 2, label: 'Quizzes' },
   ]
 
-  const xAxisData = ['WMSU', 'SCC', 'Syllabus', 'Assign', 'Activity', 'Quizzes']
-  const seriesData = [{ data: [4, 8, 9, 5, 9, 15] }]
+  const xAxisData = ['Syllabus', 'Assign', 'Activity', 'Quizzes']
+  const seriesData = [{ data: [9, 5, 9, 15] }]
   const colors = ['#9966ff']
 
   const [filter, setFilter] = useState('weekly') // Default filter
@@ -77,15 +77,15 @@ const Engagements_analytics = () => {
       ],
       series: [
         [2, 5.5, 2, 8.5, 1.5, 5, 7], // Reads
-        [null, 5.5, null, 3, null, 2, 1], // Visits
-        [7, 8, 5, 4, 3, null, 2], // Likes
+        [0, 5.5, 0, 3, 0, 2, 1], // Visits
+        [7, 8, 5, 4, 3, 0, 2], // Likes
       ],
     },
     weekly: {
       xAxis: [1, 2, 3, 4],
       series: [
         [10, 20, 30, 25], // Reads
-        [15, 25, null, 20], // Visits
+        [15, 25, 0, 20], // Visits
         [8, 5, 6, 7], // Likes
       ],
     },
@@ -217,7 +217,7 @@ const Engagements_analytics = () => {
         </Col>
         <Col className="mb-5" xs={12} sm={6} md={3} lg={7}>
           <div>
-            <h5>Most accessed materials</h5>
+            <h5>Total reads per material type</h5>
           </div>
           <div className="card custom-card align-items-center">
             <BarChart

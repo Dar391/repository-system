@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faArrowRight,
   faEye,
+  faPlus,
+  faPlusCircle,
   faSearch,
   faStar,
 } from '@fortawesome/free-solid-svg-icons'
@@ -18,6 +20,7 @@ import {
 import materialData from '../data/materialData'
 import { Link, useNavigate } from 'react-router-dom'
 import ModalAddMaterials from './ModalAddMaterials'
+import { Button, Fab } from '@mui/material'
 
 const AuthoredMaterials = () => {
   const navigate = useNavigate()
@@ -64,8 +67,8 @@ const AuthoredMaterials = () => {
                   Authored Materials
                 </p>
                 <p className="subtitles1">
-                  Organize and access your learning materials conveniently to
-                  support your educational journey and personal growth.
+                  Organize and access your learning mterials conveniently to
+                  support your educational journey and personal growth
                 </p>
               </div>
             </Col>
@@ -139,12 +142,6 @@ const AuthoredMaterials = () => {
                         </Dropdown.Item>
                       ))}
                     </DropdownButton>
-                  </Col>
-
-                  <Col className="text-end" style={{ paddingRight: '2%' }}>
-                    <button className="btnAdd" onClick={() => handleAddClick()}>
-                      Add material
-                    </button>
                   </Col>
                 </Row>
                 <Row style={{ padding: '2%' }}>
@@ -224,6 +221,34 @@ const AuthoredMaterials = () => {
           </Col>
         </Col>
       </Row>
+
+      <Fab
+        variant="extended"
+        onClick={handleAddClick}
+        className="materialBTN"
+        onMouseEnter={(e) =>
+          (e.target.style.backgroundColor = 'rgb(200, 0, 0)')
+        } // Lighter red on hover
+        onMouseLeave={(e) =>
+          (e.target.style.backgroundColor = 'rgb(146, 12, 12)')
+        } // Reset to original color
+        style={{
+          position: 'fixed',
+          bottom: '45px',
+          right: '45px',
+          backgroundColor: 'rgb(146, 12, 12)',
+          color: '#fff',
+          border: 'none',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0px 4px 6px rgba(0,0,0,0.2)',
+          cursor: 'pointer',
+          zIndex: 1000,
+          gap: '5px',
+        }}
+      >
+        <FontAwesomeIcon icon={faPlus} /> Add material
+      </Fab>
 
       {showModal && (
         <ModalAddMaterials show={showModal} handleClose={handleCloseModal} />

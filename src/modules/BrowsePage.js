@@ -22,11 +22,70 @@ import {
 import materialData from '../data/materialData'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import ModalAddMaterials from '../modules/ModalAddMaterials'
+
 const BrowsePage = () => {
   const navigate = useNavigate()
   const limitText = (text, limit) => {
     return text.length > limit ? text.substring(0, limit) + '...' : text
   }
+
+  const [showModal, setShowModal] = useState(false)
+
+  const handleCloseModal = () => {
+    setShowModal(false)
+  }
+
+  const handleAddClick = () => {
+    setShowModal(true)
+  }
+  const materialTypes = ['.docx', '.ppt', '.xlxs', '.pdf']
+
+  const disciplines = [
+    'Computer Science',
+    'Information Technology',
+    'Education',
+    'Engineering',
+    'Mathematics',
+    'Physics',
+    'Biology',
+    'Chemistry',
+    'Environmental Science',
+    'Business Administration',
+    'Psychology',
+    'Sociology',
+    'Political Science',
+    'History',
+    'Philosophy',
+    'Economics',
+    'Nursing',
+    'Medicine',
+    'Law',
+    'Architecture',
+  ]
+
+  const schools = [
+    'Harvard University',
+    'Massachusetts Institute of Technology (MIT)',
+    'Stanford University',
+    'University of Oxford',
+    'University of Cambridge',
+    'California Institute of Technology (Caltech)',
+    'University of Chicago',
+    'Princeton University',
+    'Yale University',
+    'Columbia University',
+    'University of California, Berkeley',
+    'University of Toronto',
+    'National University of Singapore (NUS)',
+    'University of Tokyo',
+    'Peking University',
+    'University of Melbourne',
+    'University of Hong Kong',
+    'University of the Philippines',
+    'Australian National University (ANU)',
+    'London School of Economics and Political Science (LSE)',
+  ]
 
   const [activeOption, setActiveOption] = useState('All materials')
   const [hoveredOption, setHoveredOption] = useState(null)
@@ -75,7 +134,7 @@ const BrowsePage = () => {
             <Col className="searchHeader d-flex flex-column align-items-end">
               <div className="input-group search-wrapper mb-2">
                 <input
-                  className="search-input form-control border-end-1 border rounded-pill"
+                  className="search-input form-control border-end-1 border "
                   type="search"
                   placeholder="i.e. ICT 111"
                   id="search-input"
@@ -92,7 +151,11 @@ const BrowsePage = () => {
                 <p className="mb-0">
                   Want to share your learning materials? Go to {'  '}
                 </p>
-                <Link to="/addMaterial" className="Link ms-2">
+                <Link
+                  onClick={handleAddClick}
+                  className="Link ms-2"
+                  role="button"
+                >
                   Add material
                 </Link>
               </div>
@@ -131,139 +194,73 @@ const BrowsePage = () => {
 
                 <div>
                   <p style={{ fontWeight: 'bold' }}>Discipline</p>
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      marginBottom: '10px',
-                      fontSize: '14px',
-                    }}
-                  >
-                    <input type="checkbox" id="discipline-it" />
-                    <label
-                      htmlFor="discipline-it"
-                      style={{ marginLeft: '10px' }}
-                    >
-                      Information Technology
-                    </label>
-                  </div>
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      marginBottom: '10px',
-                      fontSize: '14px',
-                    }}
-                  >
-                    <input type="checkbox" id="discipline-it" />
-                    <label
-                      htmlFor="discipline-it"
-                      style={{ marginLeft: '10px' }}
-                    >
-                      Computer Science
-                    </label>
-                  </div>
-
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      marginBottom: '10px',
-                      fontSize: '14px',
-                    }}
-                  >
-                    <input type="checkbox" id="discipline-it" />
-                    <label
-                      htmlFor="discipline-it"
-                      style={{ marginLeft: '10px', fontSize: '14px' }}
-                    >
-                      Education
-                    </label>
-                  </div>
-
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      marginBottom: '10px',
-                      fontSize: '14px',
-                    }}
-                  >
-                    <input type="checkbox" id="discipline-it" />
-                    <label
-                      htmlFor="discipline-it"
-                      style={{ marginLeft: '10px' }}
-                    >
-                      Engineering
-                    </label>
+                  <div className="filterby-styles">
+                    {disciplines.map((data, index) => (
+                      <div
+                        key={index}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          marginBottom: '10px',
+                          fontSize: '14px',
+                        }}
+                      >
+                        <input type="checkbox" id="discipline-it" />
+                        <label
+                          htmlFor="discipline-it"
+                          style={{ marginLeft: '10px' }}
+                        >
+                          {data}
+                        </label>
+                      </div>
+                    ))}
                   </div>
                 </div>
-                <div>
+                <div className="filter-title">
                   <p style={{ fontWeight: 'bold' }}>Intitution</p>
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      marginBottom: '10px',
-                    }}
-                  >
-                    <input type="checkbox" id="discipline-it" />
-                    <label
-                      htmlFor="discipline-it"
-                      style={{ marginLeft: '10px', fontSize: '14px' }}
-                    >
-                      Saint Columban College
-                    </label>
+                  <div className="filterby-styles">
+                    {schools.map((data, index) => (
+                      <div
+                        key={index}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          marginBottom: '10px',
+                        }}
+                      >
+                        <input type="checkbox" id="discipline-it" />
+                        <label
+                          htmlFor="discipline-it"
+                          style={{ marginLeft: '10px', fontSize: '14px' }}
+                        >
+                          {data}
+                        </label>
+                      </div>
+                    ))}
                   </div>
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      marginBottom: '10px',
-                      fontSize: '14px',
-                    }}
-                  >
-                    <input type="checkbox" id="discipline-it" />
-                    <label
-                      htmlFor="discipline-it"
-                      style={{ marginLeft: '10px' }}
-                    >
-                      Southern Mindanao Colleges
-                    </label>
-                  </div>
+                </div>
 
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      marginBottom: '10px',
-                      fontSize: '14px',
-                    }}
-                  >
-                    <input type="checkbox" id="discipline-it" />
-                    <label
-                      htmlFor="discipline-it"
-                      style={{ marginLeft: '10px' }}
-                    >
-                      Western Mindanao State University
-                    </label>
-                  </div>
+                <div className="filter-title">
+                  <p style={{ fontWeight: 'bold' }}>Technical type</p>
 
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      marginBottom: '10px',
-                    }}
-                  >
-                    <input type="checkbox" id="discipline-it" />
-                    <label
-                      htmlFor="discipline-it"
-                      style={{ marginLeft: '10px', fontSize: '14px' }}
+                  {materialTypes.map((data, index) => (
+                    <div
+                      key={index}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        marginBottom: '10px',
+                      }}
                     >
-                      OLT
-                    </label>
-                  </div>
+                      <input type="checkbox" id="discipline-it" />
+                      <label
+                        htmlFor="discipline-it"
+                        style={{ marginLeft: '10px', fontSize: '14px' }}
+                      >
+                        {data}
+                      </label>
+                    </div>
+                  ))}
                 </div>
 
                 <div>
@@ -288,7 +285,7 @@ const BrowsePage = () => {
                     style={{
                       display: 'flex',
                       alignItems: 'center',
-                      marginBottom: '10px',
+
                       fontSize: '14px',
                     }}
                   >
@@ -351,7 +348,7 @@ const BrowsePage = () => {
                   </DropdownButton>
                 </Col>
               </Row>
-              <Row className="g-4">
+              <Row className="g-4 p-3">
                 {materialData.map((item, index) => (
                   <Col
                     xs={12}
@@ -428,6 +425,10 @@ const BrowsePage = () => {
           </Row>
         </Col>
       </Row>
+
+      {showModal && (
+        <ModalAddMaterials show={showModal} handleClose={handleCloseModal} />
+      )}
     </Container>
   )
 }

@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import {
   Autocomplete,
+  Checkbox,
   Chip,
   CircularProgress,
   createFilterOptions,
+  FormControlLabel,
+  FormGroup,
+  FormLabel,
   InputAdornment,
   InputLabel,
+  Link,
   MenuItem,
   Select,
   TableBody,
   TableHead,
   TextField,
+  Typography,
 } from '@mui/material'
 import {
   Badge,
@@ -39,6 +45,7 @@ const ModalAddMaterials = ({ show, handleClose }) => {
   const [authorsList, setAuthorsList] = useState([])
   const [loading, setLoading] = useState(false)
   const [type, setType] = React.useState('')
+  const [fileType, setFileType] = useState('.docx')
   const [audienceType, setAudienceType] = React.useState('')
 
   const searchAuthor = [
@@ -67,10 +74,10 @@ const ModalAddMaterials = ({ show, handleClose }) => {
     { name: 'Quiz' },
   ]
   const targetAudience = [
-    { audience: 'College - 1st year level' },
-    { audience: 'College - 2nd year level' },
-    { audience: 'College - 3rd year level' },
-    { audience: 'College - 4th year level' },
+    { audience: '1st year college' },
+    { audience: '2nd year college' },
+    { audience: '3rd year college' },
+    { audience: '4th year college' },
   ]
   const filter = createFilterOptions()
   const discipline = [
@@ -273,6 +280,17 @@ const ModalAddMaterials = ({ show, handleClose }) => {
   const handleTypeChange = (event) => {
     setType(event.target.value)
   }
+
+  const addSelfAsAuthor = () => {
+    const newAuthor = {
+      authorName: 'Darllaine Lincopinis', // Replace with dynamic user data
+      institution: 'MSU-IIT', // Replace with dynamic user data
+      type: 'Primary Author', // Adjust the type as needed
+    }
+
+    setAuthorsList([...authorsList, newAuthor])
+  }
+
   return (
     <Modal
       show={show}
@@ -283,15 +301,20 @@ const ModalAddMaterials = ({ show, handleClose }) => {
       style={{ height: '100%' }}
     >
       <Modal.Header closeButton>
-        <Modal.Title> Material Details </Modal.Title>
+        <Modal.Title> Add a material </Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
         <Row>
-          <Col style={{ borderRight: '1px solid rgb(230,225,225' }}>
+          <Col
+            style={{
+              borderRight: '1px solid rgb(230,225,225',
+              overflowY: 'auto',
+              maxHeight: '550px',
+            }}
+          >
             <div style={{ fontSize: '14px' }}>
               <div>
-                <p>Upload material</p>
                 <Row
                   className="mb-2"
                   style={{
@@ -301,7 +324,12 @@ const ModalAddMaterials = ({ show, handleClose }) => {
                   }}
                 >
                   <Col>
+                    <Typography style={{ fontSize: '12px' }}>
+                      Upload material*
+                    </Typography>
                     <TextField
+                      required
+                      autoFocus
                       type="file"
                       onChange={handleFileChange}
                       className="mb-3"
@@ -459,7 +487,8 @@ const ModalAddMaterials = ({ show, handleClose }) => {
                       <Col>
                         <Button
                           onClick={handleAddAuthor}
-                          size="sm" // Adjusts the button size
+                          size="sm"
+                          style={{ fontSize: '12px' }}
                         >
                           Add author
                         </Button>
@@ -476,98 +505,119 @@ const ModalAddMaterials = ({ show, handleClose }) => {
                         overflowY: 'scroll',
                       }}
                     >
-                      <Table>
-                        <TableHead>
-                          <tr style={{ textAlign: 'center', fontSize: '10px' }}>
-                            <th scope="col">Name</th>
-                            <th scope="col">Institution</th>
-                            <th scope="col">Type</th>
-                            <th scope="col">Action</th>
-                          </tr>
-                        </TableHead>
-                        <TableBody>
-                          {authorsList.map((author, index) => (
+                      {authorsList.length === 0 ? (
+                        <Link
+                          onClick={() => addSelfAsAuthor()}
+                          onMouseEnter={(e) => (e.target.style.color = 'blue')}
+                          onMouseLeave={(e) => (e.target.style.color = 'gray')}
+                          style={{
+                            display: 'block',
+                            textAlign: 'center',
+                            cursor: 'pointer',
+                            textDecoration: 'underline',
+                            marginTop: '10px',
+                            fontSize: '12px',
+                            color: 'gray',
+                          }}
+                        >
+                          Add me as author
+                        </Link>
+                      ) : (
+                        <Table>
+                          <TableHead>
                             <tr
-                              className="fw-formal"
-                              key={index}
-                              style={{ fontSize: '11px' }}
+                              style={{ textAlign: 'center', fontSize: '10px' }}
                             >
-                              <td>
-                                {editingIndex === index ? (
-                                  <TextField
-                                    value={editedAuthorName}
-                                    size="small"
-                                    onChange={(e) =>
-                                      setEditedAuthorName(e.target.value)
-                                    }
-                                    sx={{
-                                      '& .MuiInputBase-input': {
-                                        fontSize: '11px',
-                                      },
-                                    }}
-                                  />
-                                ) : (
-                                  author.authorName
-                                )}
-                              </td>
-
-                              <td>
-                                {editingIndex === index ? (
-                                  <TextField
-                                    size="small"
-                                    value={editedInstitution}
-                                    onChange={(e) =>
-                                      setEditedInstitution(e.target.value)
-                                    }
-                                    sx={{
-                                      '& .MuiInputBase-input': {
-                                        fontSize: '11px',
-                                      },
-                                    }}
-                                  />
-                                ) : (
-                                  author.institution
-                                )}
-                              </td>
-
-                              <td>{author.type}</td>
-
-                              <td className="align-middle">
-                                <h6 className="mb-0 d-flex justify-content-center">
-                                  {editingIndex === index ? (
-                                    <Badge
-                                      className="mx-2"
-                                      bg="success"
-                                      style={{ cursor: 'pointer' }}
-                                      onClick={() => handleSaveClick(index)}
-                                    >
-                                      <FontAwesomeIcon icon={faCheck} />
-                                    </Badge>
-                                  ) : (
-                                    <Badge
-                                      className="mx-2"
-                                      bg="success"
-                                      style={{ cursor: 'pointer' }}
-                                      onClick={() => handleEditClick(index)}
-                                    >
-                                      <FontAwesomeIcon icon={faPen} />
-                                    </Badge>
-                                  )}
-
-                                  <Badge
-                                    className="mx-2"
-                                    bg="danger"
-                                    style={{ cursor: 'pointer' }}
-                                    onClick={() => handleDeleteAuthor(index)}
-                                  >
-                                    <FontAwesomeIcon icon={faTrash} />
-                                  </Badge>
-                                </h6>
-                              </td>
+                              <th scope="col">Name</th>
+                              <th scope="col">Institution</th>
+                              <th scope="col">Type</th>
+                              <th scope="col">Action</th>
                             </tr>
-                          ))}
-                        </TableBody>
-                      </Table>
+                          </TableHead>
+                          <TableBody>
+                            {authorsList.map((author, index) => (
+                              <tr
+                                className="fw-formal"
+                                key={index}
+                                style={{ fontSize: '11px' }}
+                              >
+                                <td>
+                                  {editingIndex === index ? (
+                                    <TextField
+                                      value={editedAuthorName}
+                                      size="small"
+                                      onChange={(e) =>
+                                        setEditedAuthorName(e.target.value)
+                                      }
+                                      sx={{
+                                        '& .MuiInputBase-input': {
+                                          fontSize: '11px',
+                                        },
+                                      }}
+                                    />
+                                  ) : (
+                                    author.authorName
+                                  )}
+                                </td>
+
+                                <td>
+                                  {editingIndex === index ? (
+                                    <TextField
+                                      size="small"
+                                      value={editedInstitution}
+                                      onChange={(e) =>
+                                        setEditedInstitution(e.target.value)
+                                      }
+                                      sx={{
+                                        '& .MuiInputBase-input': {
+                                          fontSize: '11px',
+                                        },
+                                      }}
+                                    />
+                                  ) : (
+                                    author.institution
+                                  )}
+                                </td>
+
+                                <td>{author.type}</td>
+
+                                <td className="align-middle">
+                                  <h6 className="mb-0 d-flex justify-content-center">
+                                    {editingIndex === index ? (
+                                      <Badge
+                                        className="mx-2"
+                                        bg="success"
+                                        style={{ cursor: 'pointer' }}
+                                        onClick={() => handleSaveClick(index)}
+                                      >
+                                        <FontAwesomeIcon icon={faCheck} />
+                                      </Badge>
+                                    ) : (
+                                      <Badge
+                                        className="mx-2"
+                                        bg="success"
+                                        style={{ cursor: 'pointer' }}
+                                        onClick={() => handleEditClick(index)}
+                                      >
+                                        <FontAwesomeIcon icon={faPen} />
+                                      </Badge>
+                                    )}
+
+                                    <Badge
+                                      className="mx-2"
+                                      bg="danger"
+                                      style={{ cursor: 'pointer' }}
+                                      onClick={() => handleDeleteAuthor(index)}
+                                    >
+                                      <FontAwesomeIcon icon={faTrash} />
+                                    </Badge>
+                                  </h6>
+                                </td>
+                              </tr>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -638,6 +688,7 @@ const ModalAddMaterials = ({ show, handleClose }) => {
                         freeSolo
                         renderInput={(params) => (
                           <TextField
+                            required
                             {...params}
                             label="Material type"
                             sx={{
@@ -653,79 +704,60 @@ const ModalAddMaterials = ({ show, handleClose }) => {
                       />
                     </Col>
 
-                    <Col>
-                      <Autocomplete
+                    <Col style={{ paddingTop: '8px' }}>
+                      <TextField
+                        value={fileType}
+                        disabled
                         fullWidth
-                        options={targetAudience}
-                        value={audienceType}
                         size="small"
-                        onChange={(event, newValue) => {
-                          if (typeof newValue === 'string') {
-                            setAudienceType({
-                              audience: newValue,
-                            })
-                          } else if (newValue && newValue.inputValue) {
-                            setAudienceType({
-                              audience: newValue.inputValue,
-                            })
-                          } else {
-                            setAudienceType(newValue)
-                          }
+                        label="Technical format"
+                        sx={{
+                          '& .MuiInputBase-input': {
+                            fontSize: '11px',
+                          },
+                          '& .MuiInputLabel-root': {
+                            fontSize: '12px',
+                          },
                         }}
-                        filterOptions={(options, params) => {
-                          const filtered = filter(options, params)
-
-                          const { inputValue } = params
-                          const isExisting = options.some(
-                            (option) => inputValue === option.audience
-                          )
-                          if (inputValue !== '' && !isExisting) {
-                            filtered.push({
-                              inputValue,
-                              audience: `Add "${inputValue}"`,
-                            })
-                          }
-
-                          return filtered
-                        }}
-                        selectOnFocus
-                        clearOnBlur
-                        handleHomeEndKeys
-                        id="free-solo-with-text-demo"
-                        getOptionLabel={(option) => {
-                          if (typeof option === 'string') {
-                            return option
-                          }
-                          if (option.inputValue) {
-                            return option.inputValue
-                          }
-                          return option.audience
-                        }}
-                        renderOption={(props, option) => {
-                          const { key, ...optionProps } = props
-                          return (
-                            <li key={key} {...optionProps}>
-                              {option.audience}
-                            </li>
-                          )
-                        }}
-                        freeSolo
-                        renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            label="Target audience"
-                            sx={{
-                              '& .MuiInputBase-input': {
-                                fontSize: '11px',
-                              },
-                              '& .MuiInputLabel-root': {
-                                fontSize: '12px',
-                              },
-                            }}
-                          />
-                        )}
                       />
                     </Col>
+
+                    <Autocomplete
+                      multiple
+                      id="tags-standard"
+                      options={targetAudience.map((option) => option.audience)}
+                      size="small"
+                      renderTags={(value, getTagProps) =>
+                        value.map((option, index) => {
+                          const { key, ...tagProps } = getTagProps({ index })
+                          return (
+                            <Chip
+                              variant="outlined"
+                              label={option}
+                              key={key}
+                              {...tagProps}
+                            />
+                          )
+                        })
+                      }
+                      renderInput={(params) => (
+                        <TextField
+                          required
+                          {...params}
+                          variant="filled"
+                          label="Target audience"
+                          multiline
+                          sx={{
+                            '& .MuiInputBase-input': {
+                              fontSize: '11px',
+                            },
+                            '& .MuiInputLabel-root': {
+                              fontSize: '12px',
+                            },
+                          }}
+                        />
+                      )}
+                    />
 
                     <Autocomplete
                       multiple
@@ -748,12 +780,13 @@ const ModalAddMaterials = ({ show, handleClose }) => {
                       }
                       renderInput={(params) => (
                         <TextField
+                          required
                           {...params}
                           variant="filled"
                           label="Disciplines"
                           placeholder="Enter or select discipline"
                           multiline
-                          className="mb-4"
+                          className="mb-2"
                           sx={{
                             '& .MuiInputBase-input': {
                               fontSize: '11px',
@@ -765,6 +798,81 @@ const ModalAddMaterials = ({ show, handleClose }) => {
                         />
                       )}
                     />
+
+                    <Col>
+                      <Typography style={{ fontSize: '12px' }}>
+                        Upload image
+                      </Typography>
+                      <TextField
+                        required
+                        type="file"
+                        onChange={handleFileChange}
+                        variant="outlined"
+                        sx={{
+                          '& .MuiInputBase-input': {
+                            fontSize: '11px',
+                          },
+                          '& .MuiInputLabel-root': {
+                            fontSize: '12px',
+                          },
+                          width: '200px',
+                        }}
+                      />
+                      <Typography
+                        style={{
+                          fontSize: '10px',
+                          fontStyle: 'italic',
+                          color: 'gray',
+                        }}
+                      >
+                        If no image uploaded, the system will automatically add
+                        an image.
+                      </Typography>
+                    </Col>
+                    <Col>
+                      <FormGroup
+                        required
+                        style={{
+                          border: '1px solid rgb(226, 225, 225) ',
+                          padding: '8px 0 0 15px',
+                          borderRadius: '10px',
+                        }}
+                      >
+                        <FormLabel style={{ fontSize: '12px', color: 'black' }}>
+                          Accessibility *{' '}
+                          <span
+                            style={{
+                              fontSize: '10px',
+                              color: 'grey',
+                              fontStyle: 'italic',
+                            }}
+                          >
+                            {' '}
+                            Choose at least one.
+                          </span>
+                        </FormLabel>
+                        <FormControlLabel
+                          control={<Checkbox />}
+                          label="Teachers"
+                          size="small"
+                          sx={{
+                            '& .MuiFormControlLabel-label': {
+                              fontSize: '10px',
+                            },
+                          }}
+                        />
+                        <FormControlLabel
+                          control={<Checkbox />}
+                          label="Students"
+                          size="small"
+                          sx={{
+                            '& .MuiFormControlLabel-label': {
+                              fontSize: '10px',
+                            },
+                          }}
+                        />
+                      </FormGroup>
+                    </Col>
                   </Row>
                 </div>
               </div>
@@ -778,7 +886,7 @@ const ModalAddMaterials = ({ show, handleClose }) => {
                   <div className="spinner-border text-primary" role="status">
                     <span className="visually-hidden">Loading...</span>
                   </div>
-                  <p>Converting file, please wait...</p>
+                  <p>Uploading file, please wait...</p>
                 </div>
               )}
             </div>
@@ -791,7 +899,7 @@ const ModalAddMaterials = ({ show, handleClose }) => {
                 <iframe
                   src={`${selectedFile}#toolbar=0&navpanes=0&scrollbar=0`}
                   width="100%"
-                  height="500"
+                  height="550"
                   title="materials"
                 />
               </div>
@@ -802,11 +910,11 @@ const ModalAddMaterials = ({ show, handleClose }) => {
       <Modal.Footer>
         <Row>
           <Col style={{ textAlign: 'right' }}>
-            <Button variant="secondary" onClick={handleDraft} className="mx-2">
-              Draft
+            <Button variant="primary" onClick={handleDraft} className="mx-2">
+              Submit
             </Button>
-            <Button variant="primary" onClick={handleSave}>
-              Save
+            <Button variant="danger" onClick={handleSave}>
+              Cancel
             </Button>
           </Col>
         </Row>
