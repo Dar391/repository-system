@@ -17,6 +17,7 @@ import '../src/styles/topNavStyle.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
+import { Badge } from '@mui/material'
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isScrollToAbout, setIsScrollToAbout] = useState(false)
@@ -114,7 +115,9 @@ function App() {
                       to="/collaboration-activity"
                       style={{ color: 'white' }}
                     >
-                      Collaborations
+                      <Badge variant="dot" color="primary">
+                        Collaborations
+                      </Badge>
                     </Nav.Link>
                   </>
                 )}

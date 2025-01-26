@@ -33,11 +33,13 @@
   background-color: white;
   border: 1px solid rgb(196, 192, 192);
   color: black;
-  text-align: left;
-  box-shadow: 0px 10px 8px rgba(0, 0, 0, 0.1);
-  height: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s;
 }
 
+.myMaterials .card2 {
+  position: relative;
+}
 .accessedMaterials .btnOpen {
   color: rgb(171, 61, 61);
   background-color: transparent;
@@ -77,19 +79,6 @@
 .search-input::placeholder {
   color: black;
   opacity: 0.5;
-}
-
-.pagination-container {
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  gap: 5px;
-  background-color: rgb(228, 197, 158);
-  padding: 10px;
-  border-radius: 50px; /* Pill shape */
-  width: fit-content; /* Ensures the container fits its contents */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for aesthetics */
-  margin: auto;
 }
 
 .more-btn {
@@ -159,14 +148,6 @@
   position: relative;
 }
 
-.page-container {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-  margin: 20px 0;
-}
-
 .item-page {
   margin: 0 5px;
   cursor: pointer;
@@ -190,4 +171,10 @@
 .disabled-page {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.accessedFilterCol {
+  max-width: 18%;
+  border-right: 2px solid rgb(225, 224, 224);
+  padding: 1%;
 }

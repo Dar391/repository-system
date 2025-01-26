@@ -23,6 +23,7 @@ import materialData from '../data/materialData'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import ModalAddMaterials from '../modules/ModalAddMaterials'
+import { Pagination, Stack } from '@mui/material'
 
 const BrowsePage = () => {
   const navigate = useNavigate()
@@ -115,6 +116,12 @@ const BrowsePage = () => {
   const handleClick = () => {
     navigate('/open-material') // Navigate to OpenMaterial.js
   }
+
+  const ITEMS_PER_PAGE = 16
+  const [page, setPage] = useState(1)
+  const startIndex = (page - 1) * ITEMS_PER_PAGE
+  const endIndex = startIndex + ITEMS_PER_PAGE
+  const currentData = materialData.slice(startIndex, endIndex)
 
   return (
     <Container fluid className="BrowsePage">
@@ -349,7 +356,7 @@ const BrowsePage = () => {
                 </Col>
               </Row>
               <Row className="g-4 p-3">
-                {materialData.map((item, index) => (
+                {currentData.map((item, index) => (
                   <Col
                     xs={12}
                     sm={6}
@@ -392,7 +399,8 @@ const BrowsePage = () => {
                           className="cardDesc mb-2 text-muted"
                           tag="h6"
                         >
-                          Author: {item.author}
+                          Author:{' '}
+                          <Link style={{ color: 'gray' }}> {item.author}</Link>
                         </CardSubtitle>
                         <CardText className="cardDesc">
                           {limitText(item.description, 100)}
@@ -413,13 +421,32 @@ const BrowsePage = () => {
                 ))}
               </Row>
 
-              <div style={{ paddingBottom: '2%' }}>
-                <div className="pagination-container">
-                  <button className="more-btn">MORE</button>
-                  <button className="next-btn">
-                    Next <span className="next-arrow">&#8594;</span>
-                  </button>
-                </div>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  paddingBottom: '2%',
+                }}
+              >
+                <Stack spacing={2}>
+                  <Pagination
+                    count={Math.ceil(materialData.length / ITEMS_PER_PAGE)}
+                    page={page}
+                    onChange={(_, value) => setPage(value)}
+                    sx={{
+                      '& .MuiPaginationItem-root': {
+                        color: 'rgb(146, 12, 12)',
+                      }, // Text color
+                      '& .Mui-selected': {
+                        backgroundColor: 'rgb(146, 12, 12)',
+                        color: 'white',
+                      }, // Selected page color
+                      '& .MuiPaginationItem-root:hover': {
+                        backgroundColor: 'rgba(146, 12, 12, 0.2)',
+                      }, // Hover effect
+                    }}
+                  />
+                </Stack>
               </div>
             </Col>
           </Row>

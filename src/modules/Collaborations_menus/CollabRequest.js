@@ -21,8 +21,7 @@ import {
   faTimesCircle,
   faUsers,
 } from '@fortawesome/free-solid-svg-icons'
-import { TableBody, TableHead } from '@mui/material'
-import ReactPaginate from 'react-paginate'
+import { Pagination, TableBody, TableHead } from '@mui/material'
 import '../../styles/collaboration.css'
 import MaterialRequestModal from './MaterialRequestModal'
 import pdfFile from '../../assets/Prototyping.pdf'
@@ -196,17 +195,6 @@ const CollabRequest = () => {
   const [actionType, setActionType] = useState('')
   const [selectedData, setSelectedData] = useState(null)
 
-  // Pagination logic
-  const handlePageClick = (event) => {
-    setCurrentPage(event.selected)
-  }
-
-  // Get the current items to display based on the current page
-  const displayedRequests = collaborationRequests.slice(
-    currentPage * itemsPerPage,
-    (currentPage + 1) * itemsPerPage
-  )
-
   // Handle search input change
   const handleSearch = (e) => {
     setSearch(e.target.value)
@@ -216,20 +204,6 @@ const CollabRequest = () => {
   const handleSortChange = (value) => {
     setSortBy(value)
   }
-
-  // Filter and sort the requests based on search and sort criteria
-  const filteredRequests = collaborationRequests
-    .filter(
-      (request) =>
-        request.authorName.toLowerCase().includes(search.toLowerCase()) ||
-        request.materialTitle.toLowerCase().includes(search.toLowerCase())
-    )
-    .sort((a, b) => {
-      if (sortBy === 'dateRequested') {
-        return new Date(b.dateRequested) - new Date(a.dateRequested)
-      }
-      return a.authorName.localeCompare(b.authorName)
-    })
 
   const handleBadgeClick = (type, data) => {
     setActionType(type)
@@ -243,11 +217,23 @@ const CollabRequest = () => {
     setSelectedData(null)
   }
 
+  const ITEMS_PER_PAGE = 6
+  const [page, setPage] = useState(1)
+  const startIndex = (page - 1) * ITEMS_PER_PAGE
+  const endIndex = startIndex + ITEMS_PER_PAGE
+  const currentData = collaborationRequests.slice(startIndex, endIndex)
+
   return (
     <Container fluid>
       <Row className="d-flex">
         <Col md="12" xl="10" style={{ paddingBottom: '3%' }}>
-          <Card>
+          <Card
+            style={{
+              minHeight: '510px',
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
             <CardHeader className="p-3 d-flex justify-content-between align-items-center">
               <h5 className="mb-0 d-flex align-items-center">
                 <FontAwesomeIcon
@@ -279,7 +265,9 @@ const CollabRequest = () => {
                 </Dropdown.Item>
               </DropdownButton>
             </CardHeader>
-            <CardBody>
+            <CardBody
+              style={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}
+            >
               <div
                 style={{
                   maxHeight: '450px',
@@ -297,7 +285,7 @@ const CollabRequest = () => {
                     </tr>
                   </TableHead>
                   <TableBody>
-                    {displayedRequests.map((request, index) => (
+                    {currentData.map((request, index) => (
                       <tr className="fw-formal" key={index}>
                         <th>
                           <div className="d-flex align-items-center">
@@ -375,20 +363,34 @@ const CollabRequest = () => {
                   </TableBody>
                 </Table>
               </div>
-
-              <ReactPaginate
-                previousLabel={'Previous'}
-                nextLabel={'Next'}
-                pageCount={Math.ceil(
-                  collaborationRequests.length / itemsPerPage
-                )}
-                onPageChange={handlePageClick}
-                containerClassName={'pagination-container'}
-                pageClassName={'page-item'}
-                activeClassName={'active'}
-                disabledClassName={'disabled'}
-              />
             </CardBody>
+            <div
+              spacing={2}
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                paddingBottom: '2%',
+              }}
+            >
+              <Pagination
+                count={Math.ceil(collaborationRequests.length / ITEMS_PER_PAGE)}
+                page={page}
+                onChange={(_, value) => setPage(value)}
+                sx={{
+                  '& .MuiPaginationItem-root': {
+                    color: 'maroon',
+                  }, // Text color
+                  '& .Mui-selected': {
+                    backgroundColor: 'rgb(146, 12, 12)',
+                    color: 'white',
+                  }, // Selected page color
+                  '& .MuiPaginationItem-root:hover': {
+                    backgroundColor: 'rgba(146, 12, 12, 0.2)',
+                  }, // Hover effect
+                  paddingBottom: '2%',
+                }}
+              />
+            </div>
           </Card>
         </Col>
 

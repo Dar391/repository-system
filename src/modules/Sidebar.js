@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { ListGroup } from 'react-bootstrap'
 import profileImage from '../assets/image.jpg'
 import '../styles/engagements.css'
+import { Badge } from '@mui/material'
 
 const Sidebar = ({ setActiveComponent, activeComponent, activeMenuType }) => {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -23,11 +24,13 @@ const Sidebar = ({ setActiveComponent, activeComponent, activeMenuType }) => {
       title: 'Collaboration Requests',
       src: 'collaboration-activity',
       key: 'request',
+      notif: '18',
     },
     {
       title: 'Material Update',
       src: 'collaboration-updates',
       key: 'update',
+      notif: '3',
     },
   ]
 
@@ -70,6 +73,11 @@ const Sidebar = ({ setActiveComponent, activeComponent, activeMenuType }) => {
               }}
             >
               <span>{menu.title}</span>
+              <Badge
+                badgeContent={menu.notif}
+                color="primary"
+                showZero={false}
+              />
             </ListGroup.Item>
           ))}
         </ListGroup>
